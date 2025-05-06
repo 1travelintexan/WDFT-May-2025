@@ -1,0 +1,61 @@
+body {
+  background-color: rgb(14, 124, 87);
+  margin: 0;
+  padding: 0;
+}
+h1 {
+  color: rgb(176, 51, 71);
+}
+
+/* hide the navbar by default  */
+nav {
+  padding: 10px;
+  display: none;
+  background-color: rgb(33, 139, 16);
+}
+nav img {
+  height: 100px;
+}
+#hamburger {
+  display: block;
+  height: 100px;
+}
+#big-image {
+  display: none;
+}
+
+/* ********************************************/
+/* a break point at 800px wide  */
+@media screen and (min-width: 800px) {
+  body {
+    background-color: blue;
+  }
+  #hamburger {
+    display: none;
+  }
+  nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ********************************************/
+/* a break point at 1200px wide  */
+@media screen and (min-width: 1200px) {
+  body {
+    background-color: rgb(207, 113, 25);
+  }
+  h1 {
+    color: rgb(93, 92, 92);
+  }
+  nav {
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+  }
+  #big-image {
+    display: block;
+  }
+}
