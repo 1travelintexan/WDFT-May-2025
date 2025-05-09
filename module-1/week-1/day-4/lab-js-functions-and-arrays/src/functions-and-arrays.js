@@ -19,17 +19,36 @@ const words = [
   "crackpot",
 ];
 
-function findLongestWord(arrayofword, test) {}
+function findLongestWord(arrayOfWords) {
+  if (arrayOfWords.length === 0) return null;
+  let longest = "";
+  arrayOfWords.forEach((word) => {
+    if (word.length > longest.length) {
+      longest = word;
+    }
+  });
+  return longest;
+}
 
 // Iteration 3 | Sum Numbers
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-function sumNumbers() {}
+function sumNumbers(arrayOfNums) {
+  let total = 0;
+  arrayOfNums.forEach((number) => {
+    total += number;
+  });
+  return total;
+}
 
 // Iteration 4 | Numbers Average
 const numbers2 = [2, 6, 9, 10, 7, 4, 1, 9];
 
-function averageNumbers() {}
+function averageNumbers(arrayOfNums) {
+  if (arrayOfNums.length === 0) return 0;
+  const total = sumNumbers(arrayOfNums);
+  return total / arrayOfNums.length;
+}
 
 // Iteration 5 | Find Elements
 const words2 = [
@@ -43,4 +62,17 @@ const words2 = [
   "disobedience",
 ];
 
-function doesWordExist() {}
+function doesWordExist(arrayOfWords, word) {
+  if (arrayOfWords.length === 0) return null;
+  //   let wordInsideArray = false;
+  //   arrayOfWords.forEach((oneWord) => {
+  //     if (oneWord === word) {
+  //       wordInsideArray = true;
+  //     }
+  //   });
+
+  //   return wordInsideArray;
+
+  //oneliner version
+  return arrayOfWords.includes(word);
+}
