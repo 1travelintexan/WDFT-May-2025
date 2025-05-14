@@ -1,0 +1,39 @@
+body {
+  background-color: #00702f;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.pet-card {
+  border: 2px solid white;
+  padding: 20px;
+  margin: 10px;
+  box-shadow: 5px 5px 20px white;
+  background-color: #41644f;
+}
+.ragnar-image {
+  height: 200px;
+}
+button {
+  margin-top: 10px;
+}
+
+.spin {
+  -webkit-animation: spin 1s infinite;
+}
+.hide {
+  display: none;
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.liked {
+  box-shadow: 5px 5px 20px rgb(255, 87, 235);
+}
