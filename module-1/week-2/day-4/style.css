@@ -1,0 +1,11 @@
+body {
+  background-color: green;
+}
+
+#container {
+  border: 2px solid white;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 5px 5px 20px black;
+  display: none;
+}
