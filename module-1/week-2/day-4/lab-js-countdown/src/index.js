@@ -1,38 +1,45 @@
 const DURATION = 10; // 10 seconds
 let remainingTime = DURATION; // Countdown starting from 10
-let timer = null; // Variable to store the interval
-
-
-
+let intervalId = null; // Variable to store the interval
+const startButtonElement = document.querySelector("#start-btn");
+const timeElement = document.getElementById("time");
+const toastElement = document.querySelector("#toast");
+const closeToastElement = document.querySelector("#close-toast");
+const toastMessageElement = document.querySelector("#toast-message");
 // ITERATION 1: Add event listener to the start button
-
-// Your code goes here ...
-
-
-
+startButtonElement.addEventListener("click", () => {
+  remainingTime = DURATION;
+  timeElement.innerText = remainingTime;
+  startCountdown();
+  startButtonElement.disabled = true;
+});
+closeToastElement.addEventListener("click", () => {
+  toastElement.classList.remove("show");
+});
 
 // ITERATION 2: Start Countdown
 function startCountdown() {
-  console.log("startCountdown called!");
-
-
-  // Your code goes here ...
+  showToast("⏰ Final countdown! ⏰");
+  intervalId = setInterval(() => {
+    remainingTime--;
+    timeElement.innerText = remainingTime;
+    console.log("startCountdown called!", remainingTime);
+    if (remainingTime === 0) {
+      clearInterval(intervalId);
+      showToast("Lift off! 🚀");
+      startButtonElement.disabled = false;
+    } else if (remainingTime === 5) {
+      showToast("Start the engines! 💥");
+    }
+  }, 1000);
 }
-
-
-
 
 // ITERATION 3: Show Toast
 function showToast(message) {
   console.log("showToast called!");
-
-  // Your code goes here ...
-
-
-
-
-  // BONUS: ITERATION 4: TOAST CLOSE BUTTON
-
-  // Your code goes here ...
-
+  toastElement.classList.add("show");
+  toastMessageElement.innerText = message;
+  setTimeout(() => {
+    toastElement.classList.remove("show");
+  }, 3000);
 }
