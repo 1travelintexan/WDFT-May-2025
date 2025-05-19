@@ -31,6 +31,7 @@ class Game {
     //reset the lives and score to the correct numbers for the restart
     this.livesElement.innerText = this.lives;
     this.scoreElement.innerText = this.score;
+    //erase bullet
     //setInterval that runs 60 times per second
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
@@ -59,6 +60,34 @@ class Game {
       const currentObstacle = this.obstacles[i];
       //calling the .move method on each obstacle
       currentObstacle.move();
+
+      //*****************Bullets ***************/
+      //loop for the players bullets array (inside the loop for obstacles)
+      for (let j = 0; j < this.player.bullets.length; j++) {
+        const currentBullet = this.player.bullets[j];
+        //make the bullet move
+        currentBullet.move();
+        if (currentBullet.top < -60) {
+          //remember to remove the obstacle after it passes the bottom
+          currentBullet.element.remove();
+          //remove the data of the obstacle from the array of this.obstacles
+          this.player.bullets.splice(j, 1);
+          j--;
+        }
+        //check if the bullet hits a red car
+        if (currentBullet.didCollide(currentObstacle)) {
+          console.log("Bang!");
+          //remove the image of the obstacle from the DOM
+          currentObstacle.element.remove();
+          currentBullet.element.remove();
+          //remove the data of the obstacle from the array of this.obstacles
+          this.obstacles.splice(i, 1);
+          i--;
+          //remove the data of the bullets from the array of this.player.bullets
+          this.player.bullets.splice(j, 1);
+          j--;
+        }
+      }
 
       //checking if the player ever hits an obstacle
       if (this.player.didCollide(currentObstacle)) {
@@ -96,6 +125,7 @@ class Game {
   gameOver() {
     this.player.element.remove();
     this.player = null;
+    //this removes all the bad cars
     this.obstacles.forEach((oneObstacle) => {
       oneObstacle.element.remove();
     });

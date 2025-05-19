@@ -8,7 +8,6 @@ window.onload = function () {
   restartButton.addEventListener("click", () => {
     //easy way is to reload the page
     // window.location.reload();\
-
     startGame();
   });
   //keyboard event listeners
@@ -26,6 +25,15 @@ window.onload = function () {
     }
     if (event.code === "ArrowDown") {
       ourGame.player.directionY = 3;
+    }
+    //event listener for bullet
+    if (event.code === "Space") {
+      const carLeft = ourGame.player.left + 62 - 10;
+      const carTop = ourGame.player.top;
+
+      ourGame.player.bullets.push(
+        new Bullet(ourGame.gameScreen, carLeft, carTop)
+      );
     }
   });
   window.addEventListener("keyup", (event) => {

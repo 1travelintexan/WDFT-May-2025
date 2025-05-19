@@ -15,6 +15,10 @@ class Player {
     this.element.style.left = `${this.left}px`;
     this.element.style.position = "absolute";
     this.gameScreen.appendChild(this.element);
+
+    //array for bullets
+    this.bullets = [];
+    this.isShooting = false;
   }
   move() {
     this.left = this.left + this.directionX;
