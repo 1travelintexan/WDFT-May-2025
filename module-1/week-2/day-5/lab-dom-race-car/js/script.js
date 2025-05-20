@@ -34,6 +34,8 @@ window.onload = function () {
       ourGame.player.bullets.push(
         new Bullet(ourGame.gameScreen, carLeft, carTop)
       );
+      //play sound
+      ourGame.playBoom();
     }
   });
   window.addEventListener("keyup", (event) => {

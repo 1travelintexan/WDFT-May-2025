@@ -11,11 +11,17 @@ class Game {
     this.width = 500;
     this.obstacles = [new Obstacle(this.gameScreen, 125, 200)];
     this.score = 0;
-    this.lives = 1;
+    this.lives = 3;
     this.isGameOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
     this.counter = 0;
+
+    //adding audio
+    this.boom = new Audio("../assets/boom.wav");
+    this.boom.volume = 0.1;
+    this.horn = new Audio("../assets/horn.wav");
+    this.horn.volume = 0.1;
   }
   start() {
     this.gameScreen.style.height = this.height + "px";
@@ -29,9 +35,10 @@ class Game {
     //hide the game over screen
     this.gameEndScreen.style.display = "none";
     //reset the lives and score to the correct numbers for the restart
-    this.livesElement.innerText = this.lives;
+    this.drawHearts();
+
     this.scoreElement.innerText = this.score;
-    //erase bullet
+
     //setInterval that runs 60 times per second
     this.gameIntervalId = setInterval(() => {
       this.gameLoop();
@@ -99,10 +106,15 @@ class Game {
         i--;
         // to subtract a life from the game if there is a collision
         this.lives--;
-
+        this.horn.play();
         //update the DOM to show the new number of lives
-        this.livesElement.innerText = this.lives;
-
+        this.drawHearts();
+        //spin the car when collision
+        this.player.element.classList.add("spin3d");
+        //remove the class after .4 seconds
+        setTimeout(() => {
+          this.player.element.classList.remove("spin3d");
+        }, 1000);
         //if the this.lives === 0, then game is over
         if (this.lives === 0) {
           this.isGameOver = true;
@@ -135,5 +147,17 @@ class Game {
     this.gameScreen.style.display = "none";
     //show the game over screen
     this.gameEndScreen.style.display = "block";
+  }
+  drawHearts() {
+    this.livesElement.innerHTML = "";
+    for (let i = 0; i < this.lives; i++) {
+      const imgElement = document.createElement("img");
+      imgElement.src = "../images/heart.jpg";
+      imgElement.classList.add("heart");
+      this.livesElement.appendChild(imgElement);
+    }
+  }
+  playBoom() {
+    this.boom.play();
   }
 }
