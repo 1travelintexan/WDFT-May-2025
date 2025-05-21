@@ -6,12 +6,13 @@ class Game {
     this.gameEndScreen = document.getElementById("game-end");
     this.livesElement = document.getElementById("lives");
     this.scoreElement = document.getElementById("score");
+    this.highScoresElement = document.getElementById("high-scores");
     this.player = new Player(this.gameScreen, 75, 400, 125, 200);
     this.height = 600;
     this.width = 500;
     this.obstacles = [new Obstacle(this.gameScreen, 125, 200)];
     this.score = 0;
-    this.lives = 3;
+    this.lives = 1;
     this.isGameOver = false;
     this.gameIntervalId = null;
     this.gameLoopFrequency = Math.round(1000 / 60);
@@ -145,8 +146,30 @@ class Game {
 
     //hide the game screen
     this.gameScreen.style.display = "none";
+    this.gameContainer.style.display = "none";
     //show the game over screen
     this.gameEndScreen.style.display = "block";
+
+    //high scores
+    //first check if there are any scores
+    this.highScoresElement.innerHTML = "";
+    const highScoresFromLS = localStorage.getItem("high-scores");
+    if (!highScoresFromLS) {
+      localStorage.setItem("high-scores", JSON.stringify([this.score]));
+    } else {
+      const parsedHighScores = JSON.parse(highScoresFromLS);
+      parsedHighScores.push(this.score);
+      const topThreeScores = parsedHighScores
+        .sort((a, b) => b - a)
+        .splice(0, 3);
+
+      localStorage.setItem("high-scores", JSON.stringify(topThreeScores));
+      topThreeScores.forEach((oneScore) => {
+        const liElement = document.createElement("li");
+        liElement.innerText = oneScore;
+        this.highScoresElement.appendChild(liElement);
+      });
+    }
   }
   drawHearts() {
     this.livesElement.innerHTML = "";

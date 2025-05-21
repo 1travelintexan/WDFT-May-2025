@@ -17,7 +17,7 @@ class Obstacle {
     this.gameScreen.appendChild(this.element);
   }
   move() {
-    this.top = this.top + 3;
+    this.top = this.top + 5;
     this.updatePosition();
   }
   updatePosition() {
