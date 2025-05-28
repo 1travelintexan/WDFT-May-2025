@@ -1,0 +1,24 @@
+body {
+}
+.pet-card {
+  padding: 10px;
+  margin: 10px;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+main {
+  background-color: rgb(7, 120, 120);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+#sidebar {
+  background-color: rgb(134, 134, 33);
+  width: 20%;
+  min-height: 100vh;
+}
+
+#content {
+  background-color: rgb(13, 13, 155);
+  width: 80%;
+}

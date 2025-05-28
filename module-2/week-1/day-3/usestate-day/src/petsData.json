@@ -1,0 +1,7 @@
+[
+  { "id": 1, "name": "Ragnar", "age": 4, "type": "Dog", "premium": true },
+  { "id": 2, "name": "Norte", "age": 12, "type": "Cat", "premium": true },
+  { "id": 3, "name": "Luna", "age": 1, "type": "Bird", "premium": false },
+  { "id": 4, "name": "Rocky", "age": 12, "type": "Dog", "premium": true },
+  { "id": 4, "name": "Ragnar", "age": 2, "type": "Dog", "premium": false }
+]
