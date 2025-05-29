@@ -1,0 +1,34 @@
+[
+  {
+    "id": 1,
+    "name": "Ragnar",
+    "age": 4,
+    "type": "Dog",
+    "premium": true,
+    "image": "https://plus.unsplash.com/premium_photo-1723708869868-56b26cc69b1c?q=80&w=1160&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+  },
+  {
+    "id": 2,
+    "name": "Norte",
+    "age": 12,
+    "type": "Cat",
+    "premium": true,
+    "image": "https://images.unsplash.com/photo-1606208427954-aa8319c4815e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2hpdGUlMjBjYXR8ZW58MHx8MHx8fDA%3D"
+  },
+  {
+    "id": 3,
+    "name": "Luna",
+    "age": 1,
+    "type": "Bird",
+    "premium": false,
+    "image": "https://images.unsplash.com/photo-1578379111765-1470c4842773?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8Y29ja2F0aWx8ZW58MHx8MHx8fDA%3D"
+  },
+  {
+    "id": 4,
+    "name": "Rocky",
+    "age": 12,
+    "type": "Dog",
+    "premium": true,
+    "image": "https://images.unsplash.com/photo-1616427828082-b4c8e114f120?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxjb2xsZWN0aW9uLXBhZ2V8MXxibWdraHhUMjFyY3x8ZW58MHx8fHx8"
+  }
+]

@@ -1,0 +1,50 @@
+body {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+nav {
+  margin: 0;
+  padding: 0;
+  height: 10vh;
+  background-color: rgb(9, 9, 135);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  height: 10vh;
+}
+main {
+  min-height: 80vh;
+}
+h1 {
+  margin: 0;
+  padding: 0;
+}
+footer {
+  background-color: rgb(9, 9, 95);
+  height: 10vh;
+}
+a {
+  margin: 20px;
+  color: aqua;
+  text-decoration: none;
+}
+.active {
+  color: red;
+  background-color: rgba(0, 0, 0, 0.273);
+  padding: 10px;
+  border-radius: 5px;
+}
+.pet-card {
+  border: 1px solid white;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 10px;
+}
+.detail-image {
+  width: 80%;
+  height: 500px;
+  object-fit: cover;
+}
