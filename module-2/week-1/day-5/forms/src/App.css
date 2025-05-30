@@ -1,0 +1,34 @@
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+}
+nav {
+  background-color: rgb(15, 124, 124);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 15vh;
+}
+nav img {
+  height: 100%;
+}
+a {
+  text-decoration: none;
+  margin: 5px;
+}
+form {
+  background-color: rgb(29, 77, 61);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+form label {
+  margin: 5px;
+}
+.pet-card {
+  border: 1px solid white;
+  padding: 10px;
+  margin: 10px;
+}
