@@ -27,3 +27,7 @@ a {
 button {
   margin: 5px;
 }
+.light-theme {
+  background-color: rgb(75, 124, 124);
+  color: rgb(150, 148, 148);
+}

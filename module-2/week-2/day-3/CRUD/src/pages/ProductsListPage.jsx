@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 export const ProductsListPage = ({ allProducts }) => {
+  const theData = useContext(ThemeContext);
+  console.log("on the list page", theData);
   return (
     <div>
       <h2>Products:</h2>

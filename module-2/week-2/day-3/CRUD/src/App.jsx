@@ -6,18 +6,25 @@ import { ProductDetailPage } from "./pages/ProductDetailPage";
 import { AddProductPage } from "./pages/AddProductPage";
 import { UpdateProductPage } from "./pages/UpdateProductPage";
 import { Navbar } from "./components/Navbar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-
+import { ThemeContext } from "./contexts/ThemeContext";
+import Spinner from "react-bootstrap/Spinner";
 function App() {
   const [allProducts, setAllProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const nav = useNavigate();
+
+  //here is where we get the data from the context
+  const { darkTheme, setDarkTheme } = useContext(ThemeContext);
+
   useEffect(() => {
     axios
       .get("https://dummyjson.com/products")
       .then((res) => {
         console.log(res.data.products);
         setAllProducts(res.data.products);
+        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -37,10 +44,22 @@ function App() {
       })
       .catch((err) => console.log(err));
   }
+  //check if the data is loading, if so.... return spinner
+  if (isLoading) {
+    return <Spinner animation="grow" variant="info" />;
+  }
+
   return (
-    <>
+    <div className={darkTheme ? "" : "light-theme"}>
       <Navbar />
       <h1>CRUD day!</h1>
+      <button
+        onClick={() => {
+          setDarkTheme(!darkTheme);
+        }}
+      >
+        {darkTheme ? "🌞" : "☾"}
+      </button>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route
@@ -57,7 +76,7 @@ function App() {
           element={<UpdateProductPage />}
         />
       </Routes>
-    </>
+    </div>
   );
 }
 
