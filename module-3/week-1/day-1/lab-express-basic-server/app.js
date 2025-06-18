@@ -35,13 +35,11 @@ app.get("/api/articles", (req, res) => {
 //start dynamic routes
 app.get("/pet-name/:petId", (req, res) => {
   const { petId } = req.params;
-
   res.send(petId);
 });
 
 app.get("/blah", (req, res) => {
   const { petName } = req.query;
-
   res.send(petName);
 });
 // app.use((req, res) => {
