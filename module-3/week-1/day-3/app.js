@@ -16,6 +16,7 @@ mongoose
 
 //middlewares
 app.use(morgan("dev"));
+//allows you to parse post routes and get the req.body
 app.use(express.json());
 
 //routes
