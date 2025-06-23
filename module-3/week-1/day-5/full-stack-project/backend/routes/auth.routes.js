@@ -7,6 +7,10 @@ const { isAuthenticated } = require("../middlewares/jwt.middleware");
 //route to create a new user with an encrypted password
 router.post("/signup", async (req, res) => {
   try {
+    const foundUser = await UserModel.findOne({ email: req.body.email });
+    if (foundUser) {
+      return res.status(403).json({ errorMessage: "Email already taken" });
+    }
     //first thing is to create a salt
     const theSalt = bcryptjs.genSaltSync(12);
     const hashedPassword = bcryptjs.hashSync(req.body.password, theSalt);
