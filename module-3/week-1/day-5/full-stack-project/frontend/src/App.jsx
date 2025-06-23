@@ -5,6 +5,7 @@ import NotFound from "./pages/NotFound";
 import { ProfilePage } from "./pages/ProfilePage";
 import { Signup } from "./pages/Signup";
 import { ProtectedRoute } from "./components/ProtectedRoute";
+import { AddPetPage } from "./pages/AddPetPage";
 
 function App() {
   return (
@@ -17,6 +18,14 @@ function App() {
           element={
             <ProtectedRoute>
               <ProfilePage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/add-pet"
+          element={
+            <ProtectedRoute>
+              <AddPetPage />
             </ProtectedRoute>
           }
         />

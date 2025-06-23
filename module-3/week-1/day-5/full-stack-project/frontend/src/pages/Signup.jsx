@@ -6,29 +6,34 @@ export const Signup = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState(null);
   const nav = useNavigate();
-  function handleSignupUser(event) {
-    event.preventDefault();
-    const userToCreate = { username, email, password };
-    axios
-      .post("http://localhost:5005/auth/signup", userToCreate)
-      .then((res) => {
-        console.log("user successfully created", res.data);
-        nav("/login");
-      })
-      .catch((err) => console.log(err));
-  }
 
+  async function handleSignup(e) {
+    e.preventDefault();
+    const userToSignup = { username, email, password };
+    try {
+      const { data } = await axios.post(
+        "http://localhost:5005/auth/signup",
+        userToSignup
+      );
+      console.log(data);
+      nav("/login");
+    } catch (error) {
+      console.log(error);
+      setErrorMessage(error.response.data.errorMessage);
+    }
+  }
   return (
     <div>
-      <form onSubmit={handleSignupUser}>
-        <h3>Sign up form</h3>
+      <h2>Signup Page</h2>
+      <form onSubmit={handleSignup}>
         <label>
           Username:
           <input
             type="text"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
           />
         </label>
         <label>
@@ -36,7 +41,7 @@ export const Signup = () => {
           <input
             type="email"
             value={email}
-            onChange={(event) => setEmail(event.target.value)}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </label>
         <label>
@@ -44,7 +49,7 @@ export const Signup = () => {
           <input
             type="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
           />
         </label>
         <button>Signup</button>
@@ -52,6 +57,7 @@ export const Signup = () => {
       <p>
         Already a member? <Link to="/login">Login</Link>
       </p>
+      <p className="error-message">{errorMessage}</p>
     </div>
   );
 };

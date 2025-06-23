@@ -9,28 +9,38 @@ const AuthContextWrapper = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const nav = useNavigate();
-  //function to validate the token in the local storage
-  async function authenticateUser() {
-    try {
-      const tokenInLocalStorage = localStorage.getItem("authToken");
-      const response = await axios.get("http://localhost:5005/auth/verify", {
-        headers: {
-          authorization: `Bearer ${tokenInLocalStorage}`,
-        },
-      });
-      console.log(response.data);
-      //if you are in the try then it was successful and you should set the states
-      setCurrentUser(response.data.payload);
-      setIsLoading(false);
-      setIsLoggedIn(true);
-    } catch (error) {
-      console.error(error.response.data.errorMessage);
+  //function to store the auth token inside the local storage
+  function storeToken(aToken) {
+    localStorage.setItem("authToken", aToken);
+  }
+  //function to verify the token that is in the local storage
+  function authenticateUser() {
+    const tokenInStorage = localStorage.getItem("authToken");
+    if (tokenInStorage) {
+      axios
+        .get("http://localhost:5005/auth/verify", {
+          headers: {
+            authorization: `Bearer ${tokenInStorage}`,
+          },
+        })
+        .then((res) => {
+          console.log("verify route", res.data);
+          setCurrentUser(res.data.payload);
+          setIsLoading(false);
+          setIsLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(err);
+          setCurrentUser(null);
+          setIsLoading(false);
+          setIsLoggedIn(false);
+        });
+    } else {
       setCurrentUser(null);
       setIsLoading(false);
       setIsLoggedIn(false);
     }
   }
-
   function handleLogout() {
     localStorage.removeItem("authToken");
     nav("/login");
@@ -44,11 +54,12 @@ const AuthContextWrapper = ({ children }) => {
         currentUser,
         isLoading,
         isLoggedIn,
+        storeToken,
         authenticateUser,
         handleLogout,
       }}
     >
-      {children};
+      {children}
     </AuthContext.Provider>
   );
 };

@@ -14,11 +14,19 @@ form label {
   margin: 5px;
 }
 nav {
-  background-color: rgb(48, 69, 62);
+  background-color: rgb(86, 147, 127);
   display: flex;
   align-items: center;
   justify-content: space-around;
 }
 nav img {
   height: 10vh;
+}
+.error-message {
+  color: red;
+}
+.pet-card {
+  border: 3px solid rgb(7, 205, 16);
+  padding: 10px;
+  margin: 10px;
 }
