@@ -38,12 +38,17 @@ export const ProfilePage = () => {
   return (
     <div>
       <Navbar />
-      <h3>{currentUser.username}'s Profile Page</h3>
+      <h3>{currentUser && currentUser.username}'s Profile Page</h3>
       <Link to="/add-pet">Add Pet</Link>
       <h3>Pets:</h3>
       {pets.map((onePet) => {
         return (
           <div key={onePet._id} className="pet-card">
+            <img
+              src={onePet.image}
+              alt="pet image"
+              style={{ height: " 100px" }}
+            />
             <h4>Pet Name: {onePet.name}</h4>
             <button onClick={() => handleRemovePet(onePet._id)}>Remove</button>
           </div>

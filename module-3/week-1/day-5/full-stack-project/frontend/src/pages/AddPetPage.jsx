@@ -9,20 +9,20 @@ export const AddPetPage = () => {
   //function to add pet with token
   async function handleAddPet(e) {
     e.preventDefault();
+    //this takes the image that was choosen from the input
+    const theImage = e.target.image.files[0];
+    //this creates a new object that is form data
+    const ourFormData = new FormData();
+    //these add properties to the new object that is form data
+    ourFormData.append("imageUrl", theImage);
+    ourFormData.append("name", name);
     const tokenInStorage = localStorage.getItem("authToken");
     try {
-      await axios.post(
-        "http://localhost:5005/pets/add-pet",
-        {
-          name,
+      await axios.post("http://localhost:5005/pets/add-pet", ourFormData, {
+        headers: {
+          authorization: `Bearer ${tokenInStorage}`,
         },
-        {
-          headers: {
-            authorization: `Bearer ${tokenInStorage}`,
-          },
-        }
-      );
-
+      });
       nav("/profile");
     } catch (error) {
       console.log(error);
@@ -39,6 +39,10 @@ export const AddPetPage = () => {
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
+        </label>
+        <label>
+          Pet Image:
+          <input type="file" name="image" />
         </label>
         <button>Add</button>
       </form>
