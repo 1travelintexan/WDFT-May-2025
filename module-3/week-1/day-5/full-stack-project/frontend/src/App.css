@@ -30,3 +30,7 @@ nav img {
   padding: 10px;
   margin: 10px;
 }
+footer {
+  height: 20vh;
+  background-color: aquamarine;
+}

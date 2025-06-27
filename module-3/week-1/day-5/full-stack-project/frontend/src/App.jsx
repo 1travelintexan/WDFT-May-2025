@@ -7,6 +7,7 @@ import { Signup } from "./pages/Signup";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AddPetPage } from "./pages/AddPetPage";
 import MapComponent from "./components/MapComponent";
+import OutletComponent from "./components/OutletComponent";
 
 function App() {
   return (
@@ -18,7 +19,9 @@ function App() {
           path="/profile"
           element={
             <ProtectedRoute>
-              <ProfilePage />
+              <OutletComponent>
+                <ProfilePage />
+              </OutletComponent>
             </ProtectedRoute>
           }
         />
@@ -26,7 +29,9 @@ function App() {
           path="/add-pet"
           element={
             <ProtectedRoute>
-              <AddPetPage />
+              <OutletComponent>
+                <AddPetPage />
+              </OutletComponent>
             </ProtectedRoute>
           }
         />
@@ -34,7 +39,9 @@ function App() {
           path="/map"
           element={
             <ProtectedRoute>
-              <MapComponent />
+              <OutletComponent>
+                <MapComponent />
+              </OutletComponent>
             </ProtectedRoute>
           }
         />

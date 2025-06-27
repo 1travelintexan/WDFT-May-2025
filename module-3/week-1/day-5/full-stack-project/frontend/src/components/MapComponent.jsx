@@ -7,13 +7,13 @@ export default function MapComponent() {
   return (
     <>
       <MapContainer
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={false}
+        center={[38.73, -9.14]}
+        zoom={10}
+        scrollWheelZoom={true}
         style={{ height: "300px" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <Marker position={[51.505, -0.09]}>
+        <Marker position={[38.73, -9.14]}>
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
