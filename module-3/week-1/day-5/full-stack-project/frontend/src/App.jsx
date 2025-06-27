@@ -6,6 +6,7 @@ import { ProfilePage } from "./pages/ProfilePage";
 import { Signup } from "./pages/Signup";
 import { ProtectedRoute } from "./components/ProtectedRoute";
 import { AddPetPage } from "./pages/AddPetPage";
+import MapComponent from "./components/MapComponent";
 
 function App() {
   return (
@@ -26,6 +27,14 @@ function App() {
           element={
             <ProtectedRoute>
               <AddPetPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/map"
+          element={
+            <ProtectedRoute>
+              <MapComponent />
             </ProtectedRoute>
           }
         />
